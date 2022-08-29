@@ -114,7 +114,9 @@ $ npm run dev (to run both React client and Node server side development)
 $ docker run -d --name redis-stack -p 6379:6379 -p 8001:8001 redis/redis-stack:latest
 ```
 
-> For Google client Id you have to visit [Google developers console](https://console.cloud.google.com/apis/dashboard?pli=1) from here generate your respective client Id Ensure the first line of the env file contains the REACT_APP_GOOGLE_API_TOKEN REDIS_HOST = `redis://localhost:6379`
+> For Google client Id you have to visit [Google developers console](https://console.cloud.google.com/apis/dashboard?pli=1) from here generate your respective client Id 
+> Ensure the first line of the env file contains the REACT_APP_GOOGLE_API_TOKEN 
+> REDIS_HOST = `redis://localhost:6379`
 
 - Backend server will be running on http://localhost:3005
 - Frontend server will be running on http://localhost:3000
