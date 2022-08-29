@@ -92,7 +92,8 @@ For simplicity, a unique key index with an hash value is created when a user or 
 
 ### Performance Benchmarks
 
-<img src="https://github.com/phenom-world/Memories-RERN-App/blob/main/docs/response1.png" width="50%" height="auto">
+<img src="https://github.com/phenom-world/Memories-RERN-App/blob/main/docs/response.png" width="50%" height="auto">
+<img src="https://github.com/phenom-world/Memories-RERN-App/blob/main/docs/response2.png" width="50%" height="auto">
 
 - The first frame represents the response from the endpoint with MONGODB database
 - The second frame represents the response from the endpoint with REDIS database which implies about 3x faster response
