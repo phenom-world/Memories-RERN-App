@@ -12,7 +12,7 @@ The App is called "Memories" and it is a simple social media app that allows use
 
 Here's a short video that explains the project and how it uses Redis:
 
-[![Embed your YouTube video](docs/cover.jpg)](https://www.youtube.com/watch?v=u6_c0e6xrY4&t=35s)
+[![Embed your YouTube video](https://github.com/phenom-world/Memories-RERN-App/blob/main/docs/cover.png)](https://www.youtube.com/watch?v=u6_c0e6xrY4&t=35s)
 
 ## How it works
 #### User
