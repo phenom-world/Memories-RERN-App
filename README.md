@@ -16,6 +16,8 @@ Here's a short video that explains the project and how it uses Redis:
 
 ## How it works
 
+- Redis OM (pronounced REDiss OHM) makes it easy to add Redis to your Node.js application by mapping the Redis data structures you know and love to classes that you define. No more pesky, low-level commands, just pure code with a fluent interface.
+
 #### User
 
 ```
@@ -36,6 +38,9 @@ const userSchema = new Schema(
     dataStructure: "JSON",
   }
 );
+
+await userSchema.createIndex();
+
 ```
 
 #### Posts
@@ -58,6 +63,9 @@ const postSchema = new Schema(
     dataStructure: "JSON",
   }
 );
+
+await postSchema.createIndex();
+
 ```
 
 For simplicity, a unique key index with an hash value is created when a user or post is created and creates a new hashed index for subsequently added new repositories. This index key is unique for each repository, User and Post data are then stored in the redis database
@@ -87,8 +95,59 @@ For simplicity, a unique key index with an hash value is created when a user or 
 
 ### How the data is accessed:
 
-- Total posts created:
+- if an object's entityId is known, such object can be accessed using .fetch method on the repository
 
+  const post = await postRepository.fetch(req.params.id)
+
+  e.g:
+
+  ```
+  post.title // "My memory"
+  post.message // "Blissful memory"
+  post.name // "Wakeel Kehinde"
+  post.creator // "01GBMJVW68YR91FA94Y32NB6FZ" (an entityId of a user)
+  post.tags // "New, Honey, Moon"
+  post.selectedFile // "react-string"
+  post.likes // [ "01GBMJVW68YR91FA94Y32NB6FZ"] (an array of entityId of a user)
+  post.comments // ["wow", "interesting"]
+  post.createdAt // 1661720826.775 (date stored in milliseconds)
+  ```
+
+- to access all data for a particular repository or perform any partial searche: Using RediSearch with Redis OM is where the power of this fully armed and operational battle station starts to become apparent. If you have RediSearch installed(which is installed along with latest Redis stack) on your Redis server you can use the search capabilities of Redis OM. This enables commands like:
+
+  ```
+  const posts = await postRepository.search()
+  .where('name').equals('Wakeel')
+  .and('tags').match('New')
+  .return.all()
+  ```
+
+- Recall that we built the index both user and post repository, this allows you to perform Redis searches on the repositories.
+
+> If you change your schema, no worries. Redis OM will automatically rebuild the index for you. Just call `.createIndex` again. And don't worry if you call .`createIndex` when your schema hasn't changed. Redis OM will only rebuild your index if the schema has changed. So, you can safely use it in your startup code.
+
+- The above returns the posts with precisely name `Wakeel` and any tags that matches `New`
+
+- Also, you can find all posts and return them with the command, This will return all of the posts that you've put in Redis:
+
+```
+const posts = await postRepository.search().return.all()
+```
+
+- You can page through the results and sort in descending or ascending order. Just pass in the zero-based offset and the number of results you want:
+
+```
+const offset = 8
+const count = 10
+const posts = await postRepository.search().sortDescending("createdAt").return.page(offset, limit);
+```
+
+- To access the first post. You can easily grab the first result of your search with .first:
+
+```
+const firstPost = await postRepository.search().return.first();
+Note: If you have no posts, this will return null.
+```
 
 ### Performance Benchmarks
 
@@ -96,7 +155,7 @@ For simplicity, a unique key index with an hash value is created when a user or 
 <img src="https://github.com/phenom-world/Memories-RERN-App/blob/main/docs/response2.png" width="50%" height="auto">
 
 - The first frame represents the response from the endpoint with MONGODB database
-- The second frame represents the response from the endpoint with REDIS database which implies about 3x faster response
+- The second frame represents the response from the endpoint with REDIS database which implies more than 3x faster response
 
 ## How to run it locally?
 
