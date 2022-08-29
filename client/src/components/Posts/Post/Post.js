@@ -80,7 +80,7 @@ const Post = ({ post, user }) => {
           </Typography>
         </div>
         <Typography variant="h5" className={classes.title} gutterBottom>
-          {post.title}
+          {post?.title.slice(0, 16) + `${post?.title.length > 16 ? "..." : ""}`}
         </Typography>
         <CardContent style={{ marginTop: "-18px" }}>
           <Typography variant="body2" color="textSecondary" component="p">
