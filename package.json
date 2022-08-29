@@ -11,7 +11,7 @@
     "server-install": "cd server && install",
     "client-install": "cd client && npm install --legacy-peer-deps",
     "install-all": "concurrently \"npm run server-install\" \"npm run client-install\" ",
-    "dev": "sed -n '1,1p' .env > ./client/.env && concurrently \"npm run server\" \"npm run client\""
+    "dev": "sed -n '1,2p' .env > ./client/.env && concurrently \"npm run server\" \"npm run client\""
   },
   "keywords": [],
   "author": "Wakeel Kehinde",

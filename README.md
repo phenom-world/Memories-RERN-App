@@ -15,7 +15,9 @@ Here's a short video that explains the project and how it uses Redis:
 [![Embed your YouTube video](https://github.com/phenom-world/Memories-RERN-App/blob/main/docs/cover.png)](https://www.youtube.com/watch?v=u6_c0e6xrY4&t=35s)
 
 ## How it works
+
 #### User
+
 ```
 const userSchema = new Schema(
   User,
@@ -37,6 +39,7 @@ const userSchema = new Schema(
 ```
 
 #### Posts
+
 ```
 const postSchema = new Schema(
   Post,
@@ -64,26 +67,27 @@ For simplicity, a unique key index with an hash value is created when a user or 
 ### How the data is stored:
 
 - The user and post data are stored in various keys and various data types.
+
 * For each of user, key like: `User:{userId}` is generated and data is stored like:
-    * email: like johndoe@gmail.com
-    * password: Encrypted password
-    * name: Wakeel Kehinde
 
-* For each of the post,  key like: `Post:{postId}` is generated and data is stored like:
-    * title: "My memory"
-    * message: "Blissful memory"
-    * name: "Wakeel Kehinde"
-    * creator:"01GBMJVW68YR91FA94Y32NB6FZ" (an entityId of a user)
-    * tags: "New, Honey, Moon"
-    * selectedFile:"react-string"
-    * likes:[ "01GBMJVW68YR91FA94Y32NB6FZ"] (an array of entityId of a user)
-    * comments:["wow", "interesting"]
-    * createdAt: 1661720826.775 (date stored in milliseconds)
+  - email: like johndoe@gmail.com
+  - password: Encrypted password
+  - name: Wakeel Kehinde
 
+* For each of the post, key like: `Post:{postId}` is generated and data is stored like:
+  - title: "My memory"
+  - message: "Blissful memory"
+  - name: "Wakeel Kehinde"
+  - creator:"01GBMJVW68YR91FA94Y32NB6FZ" (an entityId of a user)
+  - tags: "New, Honey, Moon"
+  - selectedFile:"react-string"
+  - likes:[ "01GBMJVW68YR91FA94Y32NB6FZ"] (an array of entityId of a user)
+  - comments:["wow", "interesting"]
+  - createdAt: 1661720826.775 (date stored in milliseconds)
 
 ### How the data is accessed:
-- Total posts created:
 
+- Total posts created:
 
 ### Performance Benchmarks
 
@@ -114,9 +118,7 @@ $ npm run dev (to run both React client and Node server side development)
 $ docker run -d --name redis-stack -p 6379:6379 -p 8001:8001 redis/redis-stack:latest
 ```
 
-> For Google client Id you have to visit [Google developers console](https://console.cloud.google.com/apis/dashboard?pli=1) from here generate your respective client Id 
-> Ensure the first line of the env file contains the REACT_APP_GOOGLE_API_TOKEN 
-> REDIS_HOST = `redis://localhost:6379`
+> For Google client Id you have to visit [Google developers console](https://console.cloud.google.com/apis/dashboard?pli=1) from here generate your respective client Id Ensure the first line of the env file contains the REACT_APP_GOOGLE_API_TOKEN REDIS_HOST = `redis://localhost:6379`
 
 - Backend server will be running on http://localhost:3005
 - Frontend server will be running on http://localhost:3000
