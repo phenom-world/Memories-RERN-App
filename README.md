@@ -12,17 +12,78 @@ The App is called "Memories" and it is a simple social media app that allows use
 
 Here's a short video that explains the project and how it uses Redis:
 
-[![Embed your YouTube video](https://i.ytimg.com/vi/vyxdC1qK4NE/maxresdefault.jpg)](https://www.youtube.com/watch?v=vyxdC1qK4NE)
+[![Embed your YouTube video](docs/cover.jpg)](https://www.youtube.com/watch?v=u6_c0e6xrY4&t=35s)
 
 ## How it works
+#### User
+```
+const userSchema = new Schema(
+  User,
+  {
+    name: {
+      type: "string",
+    },
+    email: {
+      type: "string",
+    },
+    password: {
+      type: "string",
+    },
+  },
+  {
+    dataStructure: "JSON",
+  }
+);
+```
+
+#### Posts
+```
+const postSchema = new Schema(
+  Post,
+  {
+    title: { type: "text" },
+    message: { type: "text" },
+    name: { type: "string" },
+    creator: { type: "string" },
+    tags: { type: "text" },
+    selectedFile: { type: "string" },
+    likes: { type: "string[]" },
+    comments: { type: "string[]" },
+    createdAt: { type: "date", sortable: true },
+  },
+  {
+    dataStructure: "JSON",
+  }
+);
+```
+
+For simplicity, a unique key index with an hash value is created when a user or post is created and creates a new hashed index for subsequently added new repositories. This index key is unique for each repository, User and Post data are then stored in the redis database
+
+> The created unique index keys allows you to perform search on each of the repository
 
 ### How the data is stored:
 
-Refer to [this example](https://github.com/redis-developer/basic-analytics-dashboard-redis-bitmaps-nodejs#how-the-data-is-stored) for a more detailed example of what you need for this section.
+- The user and post data are stored in various keys and various data types.
+* For each of user, key like: `User:{userId}` is generated and data is stored like:
+    * email: like johndoe@gmail.com
+    * password: Encrypted password
+    * name: Wakeel Kehinde
+
+* For each of the post,  key like: `Post:{postId}` is generated and data is stored like:
+    * title: "My memory"
+    * message: "Blissful memory"
+    * name: "Wakeel Kehinde"
+    * creator:"01GBMJVW68YR91FA94Y32NB6FZ" (an entityId of a user)
+    * tags: "New, Honey, Moon"
+    * selectedFile:"react-string"
+    * likes:[ "01GBMJVW68YR91FA94Y32NB6FZ"] (an array of entityId of a user)
+    * comments:["wow", "interesting"]
+    * createdAt: 1661720826.775 (date stored in milliseconds)
+
 
 ### How the data is accessed:
+- Total posts created:
 
-Refer to [this example](https://github.com/redis-developer/basic-analytics-dashboard-redis-bitmaps-nodejs#how-the-data-is-accessed) for a more detailed example of what you need for this section.
 
 ### Performance Benchmarks
 
