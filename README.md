@@ -89,9 +89,13 @@ For simplicity, a unique key index with an hash value is created when a user or 
 
 - Total posts created:
 
+
 ### Performance Benchmarks
 
-[If you migrated an existing app to use Redis, please put performance benchmarks here to show the performance improvements.]
+<img src="https://github.com/phenom-world/Memories-RERN-App/blob/main/docs/response.png" width="50%" height="auto">
+
+- The first frame represents the response from the endpoint with MONGODB database
+- The second frame represents the response from the endpoint with REDIS database which implies about 3x faster response
 
 ## How to run it locally?
 
