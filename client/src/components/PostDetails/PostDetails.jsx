@@ -51,7 +51,7 @@ const PostDetails = ({ user }) => {
             {post?.tags?.split(",").map((tag) => `#${tag} `)}
           </Typography>
           <Typography gutterBottom variant="body1" component="p">
-            {post.message}
+            {post?.message.slice(0, 100) + `${post?.message.length > 100 ? "..." : ""}`}
           </Typography>
           <Typography variant="h6">Created by: {post.name}</Typography>
           <Typography variant="body1">{moment(post.createdAt).fromNow()}</Typography>

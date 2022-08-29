@@ -1,0 +1,26 @@
+{
+  "name": "memories_app",
+  "version": "1.0.0",
+  "description": "<h1 align=\"center\">  &nbsp; Memories App  </h1>",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server/index.js",
+    "server": "nodemon server/index.js",
+    "client": "cd client && npm run start",
+    "server-install": "cd server && install",
+    "client-install": "cd client && npm install --legacy-peer-deps",
+    "install-all": "concurrently \"npm run server-install\" \"npm run client-install\" ",
+    "dev": "sed -n '1,1p' .env > ./client/.env && concurrently \"npm run server\" \"npm run client\""
+  },
+  "keywords": [],
+  "author": "Wakeel Kehinde",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^7.3.0"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.1",
+    "nodemon": "^2.0.19"
+  }
+}

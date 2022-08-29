@@ -9,6 +9,8 @@ import { errorHandler, notFound } from "./middleware/error.js";
 import userRoutes from "./routes/users.js";
 
 const app = express();
+
+
 dotenv.config();
 
 //Body Parser

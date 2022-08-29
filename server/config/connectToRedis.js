@@ -1,9 +1,7 @@
 import { Client } from "redis-om";
 import dotenv from "dotenv";
 
-dotenv.config();
-
-const url = process.env.redis_host;
+const url = process.env.REDIS_HOST;
 let client;
 try {
   client = await new Client().open(url);

@@ -29,7 +29,6 @@ const Auth = () => {
   const handleShowPassword = () => {
     setShowPassword((prevShowPassword) => !prevShowPassword);
   };
-
   const handleSubmit = (e) => {
     e.preventDefault();
 

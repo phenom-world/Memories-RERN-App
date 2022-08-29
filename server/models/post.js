@@ -1,6 +1,5 @@
 import { Entity, Schema } from "redis-om";
 import client from "../config/connectToRedis.js";
-
 class Post extends Entity {}
 
 const postSchema = new Schema(

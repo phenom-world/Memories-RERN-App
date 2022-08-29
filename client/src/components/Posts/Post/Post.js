@@ -84,7 +84,7 @@ const Post = ({ post, user }) => {
         </Typography>
         <CardContent style={{ marginTop: "-18px" }}>
           <Typography variant="body2" color="textSecondary" component="p">
-            {post?.message.slice(0, 100) + `${post?.message.length > 100 && "..."}`}
+            {post?.message.slice(0, 100) + `${post?.message.length > 100 ? "..." : ""}`}
           </Typography>
         </CardContent>
       </ButtonBase>
