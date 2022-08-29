@@ -118,7 +118,8 @@ $ npm run dev (to run both React client and Node server side development)
 $ docker run -d --name redis-stack -p 6379:6379 -p 8001:8001 redis/redis-stack:latest
 ```
 
-> For Google client Id you have to visit [Google developers console](https://console.cloud.google.com/apis/dashboard?pli=1) from here generate your respective client Id Ensure the first line of the env file contains the REACT_APP_GOOGLE_API_TOKEN REDIS_HOST = `redis://localhost:6379`
+> For Google client Id you have to visit [Google developers console](https://console.cloud.google.com/apis/dashboard?pli=1) from here generate your respective client Id Ensure the first two lines of the env file contains the REACT_APP_GOOGLE_API_TOKEN and REACT_APP_BASE_URL
+> REDIS_HOST = `redis://localhost:6379`
 
 - Backend server will be running on http://localhost:3005
 - Frontend server will be running on http://localhost:3000
@@ -146,8 +147,8 @@ To make deploys work, you need to create free account on [Redis Cloud](https://r
 
 ### Heroku
 
-[Insert Deploy on Heroku button](https://devcenter.heroku.com/articles/heroku-button)
+[Deployed Backend Link](https://memories-app-redis.herokuapp.com)
 
 ### Netlify
 
-[Insert Deploy on Netlify button](https://www.netlify.com/blog/2016/11/29/introducing-the-deploy-to-netlify-button/)
+[Frontend Memories App](https://memories-app-redis.netlify.app)
