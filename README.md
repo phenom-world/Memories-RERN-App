@@ -39,7 +39,7 @@ const userSchema = new Schema(
   }
 );
 
-await userSchema.createIndex();
+await userSchema.createIndex(); // Builds the index for user repository
 
 ```
 
@@ -64,7 +64,7 @@ const postSchema = new Schema(
   }
 );
 
-await postSchema.createIndex();
+await postSchema.createIndex(); // Builds the index for post repository
 
 ```
 
@@ -122,11 +122,13 @@ For simplicity, a unique key index with an hash value is created when a user or 
   .return.all()
   ```
 
+- The above returns the posts with precisely name `Wakeel` and any tags that matches `New`
+
 - Recall that we built the index both user and post repository, this allows you to perform Redis searches on the repositories.
 
 > If you change your schema, no worries. Redis OM will automatically rebuild the index for you. Just call `.createIndex` again. And don't worry if you call .`createIndex` when your schema hasn't changed. Redis OM will only rebuild your index if the schema has changed. So, you can safely use it in your startup code.
 
-- The above returns the posts with precisely name `Wakeel` and any tags that matches `New`
+
 
 - Also, you can find all posts and return them with the command, This will return all of the posts that you've put in Redis:
 
