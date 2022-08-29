@@ -1,6 +1,6 @@
 # Memories App
 
-### <h2 align="center"> 💫💫💫 &nbsp; [Live Demo](https://hao-memories-mern-app.netlify.app/) 💫💫💫 </h2>
+### <h2 align="center"> 💫💫💫 &nbsp; [Live Demo](https://memories-app-redis.netlify.app) 💫💫💫 </h2>
 
 Full Stack "R"ERN Application - from start to finish.
 
@@ -119,6 +119,7 @@ $ docker run -d --name redis-stack -p 6379:6379 -p 8001:8001 redis/redis-stack:l
 ```
 
 > For Google client Id you have to visit [Google developers console](https://console.cloud.google.com/apis/dashboard?pli=1) from here generate your respective client Id Ensure the first two lines of the env file contains the REACT_APP_GOOGLE_API_TOKEN and REACT_APP_BASE_URL
+
 > REDIS_HOST = `redis://localhost:6379`
 
 - Backend server will be running on http://localhost:3005
